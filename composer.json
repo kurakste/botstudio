@@ -9,6 +9,7 @@
         }
     ],
     "require": {
-        "bogdaan/viber-bot-php": "^0.0.12"
+        "bogdaan/viber-bot-php": "^0.0.12",
+        "vlucas/phpdotenv": "^3.3"
     }
 }
