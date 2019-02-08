@@ -9,11 +9,14 @@ $dotenv->load();
 
 
 $apiKey = $_ENV['apikey'];
-$webhookUrl = $config['webhookUrl']; 
+$webhookUrl = $_ENV['webhookurl']; 
+
+// echo $apiKey; die;
+echo $webhookUrl; die;
 
 $botSender = new Sender([
-    'name' => 'Whois bot',
-    'avatar' => 'https://developers.viber.com/img/favicon.ico',
+    'name' => 'BotSeller',
+    'avatar' => __DIR__.'/../img/avatar.png',
 ]);
 
 try {
@@ -23,5 +26,3 @@ try {
 } catch (Exception $e) {
     echo 'Error: ' . $e->getMessage() . "\n";
 }
-
-echo $_ENV['host'];
