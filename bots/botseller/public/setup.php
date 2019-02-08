@@ -1,4 +1,5 @@
 <?php 
+ini_set('error_reporting', E_ALL);
 
 require_once("../../../vendor/autoload.php");
 
@@ -10,14 +11,6 @@ $dotenv->load();
 
 $apiKey = $_ENV['apikey'];
 $webhookUrl = $_ENV['webhookurl']; 
-
-// echo $apiKey; die;
-echo $webhookUrl; die;
-
-$botSender = new Sender([
-    'name' => 'BotSeller',
-    'avatar' => __DIR__.'/../img/avatar.png',
-]);
 
 try {
     $client = new Client(['token' => $apiKey]);
