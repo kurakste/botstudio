@@ -1,0 +1,14 @@
+{
+    "name": "kurakste/botstudio",
+    "description": "Bot factory",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Stepan",
+            "email": "kurakste@gmail.com"
+        }
+    ],
+    "require": {
+        "bogdaan/viber-bot-php": "^0.0.12"
+    }
+}
