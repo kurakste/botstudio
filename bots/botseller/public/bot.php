@@ -42,7 +42,7 @@ try {
         })
         ->onText('|начать|s', function ($event) use ($bot, $botSender, $log) {
             $log->info('onStart' . $event->getMessage()->getText());
-            $str = require_once(__DIR__.'/messages/greeting.php');
+            $str = require_once(__DIR__.'/../messages/greeting.php');
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setTrackingData($str)
@@ -52,9 +52,9 @@ try {
             );
         })
         ->onText('|menu|s', function ($event) use ($bot, $botSender, $log) {
-            $kbrd = require_once(__DIR__.'/keyboards/mainMenu.php');
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $log->info('menu method:');
-            $str = require_once(__DIR__.'/messages/greeting.php');
+            $str = require_once(__DIR__.'/../messages/greeting.php');
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
@@ -65,9 +65,9 @@ try {
         })
         ->onText('|usecases|s', function ($event) use ($bot, $botSender, $log) {
             $log->info('usecases method:');
-            $kbrd = require_once(__DIR__.'/keyboards/uscases.php');
+            $kbrd = require_once(__DIR__.'/../keyboards/uscases.php');
             $log->info('usecases method:');
-            $str = file_get_contents(__DIR__.'/messages/vars.txt');
+            $str = file_get_contents(__DIR__.'/../messages/vars.txt');
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
@@ -78,9 +78,9 @@ try {
         })
         ->onText('|benefits|s', function ($event) use ($bot, $botSender, $log) {
             $log->info('benefits method:');
-            $kbrd = require_once(__DIR__.'/keyboards/benifits.php');
+            $kbrd = require_once(__DIR__.'/../keyboards/benifits.php');
             $log->info('usecases method:');
-            $str = file_get_contents(__DIR__.'/messages/benefits.txt');
+            $str = file_get_contents(__DIR__.'/../messages/benefits.txt');
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
@@ -91,9 +91,9 @@ try {
         })
         ->onText('|connectors|s', function ($event) use ($bot, $botSender, $log) {
             $log->info('connectors method:');
-            $kbrd = require_once(__DIR__.'/keyboards/connectors.php');
+            $kbrd = require_once(__DIR__.'/../keyboards/connectors.php');
             $log->info('usecases method:');
-            $str = file_get_contents(__DIR__.'/messages/connectors.txt');
+            $str = file_get_contents(__DIR__.'/../messages/connectors.txt');
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
@@ -104,9 +104,9 @@ try {
         })
         ->onText('|effectually|s', function ($event) use ($bot, $botSender, $log) {
             $log->info('effectually method:');
-            $kbrd = require_once(__DIR__.'/keyboards/effectually.php');
+            $kbrd = require_once(__DIR__.'/../keyboards/effectually.php');
             $log->info('usecases method:');
-            $str = file_get_contents(__DIR__.'/messages/effectually.txt');
+            $str = file_get_contents(__DIR__.'/../messages/effectually.txt');
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
@@ -117,9 +117,9 @@ try {
         })
         ->onText('|prices|s', function ($event) use ($bot, $botSender, $log) {
             $log->info('prices method:');
-            $kbrd = require_once(__DIR__.'/keyboards/mainMenu.php');
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $log->info('usecases method:');
-            $str = file_get_contents(__DIR__.'/messages/prices.txt');
+            $str = file_get_contents(__DIR__.'/../messages/prices.txt');
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
@@ -130,9 +130,9 @@ try {
         })
         ->onText('|callback|s', function ($event) use ($bot, $botSender, $log) {
             $log->info('prices method:');
-            $kbrd = require_once(__DIR__.'/keyboards/mainMenu.php');
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $log->info('usecases method:');
-            $str = file_get_contents(__DIR__.'/messages/callback.txt');
+            $str = file_get_contents(__DIR__.'/../messages/callback.txt');
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
@@ -156,11 +156,11 @@ try {
             );
         })
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log) {
-            $joke = require_once(__DIR__.'/skills/humor/gethummor.php');
+            $joke = require_once(__DIR__.'/../skills/humor/gethummor.php');
             $log->info('onText ' . $joke);
             $str = "К сожалению я вас не понимаю. Давайте я вам анекдот расскажу: \n";
             $str = $str.$joke;
-            $kbrd = require_once(__DIR__.'/keyboards/mainMenu.php');
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             // .* - match any symbols
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
