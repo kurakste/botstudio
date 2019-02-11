@@ -21,6 +21,9 @@ $botSender = new Sender([
 $log = new Logger('bot');
 $log->pushHandler(new StreamHandler('/tmp/bot.log'));
 
+$pdo = $_ENV['pdo'];
+$dbusername = $_ENV['dbusername'];
+$dbpassword = $_ENV['dbpassword'];
 $storage = new Storage($pdo, $dbusername, $dbpassword);
 
 try {
