@@ -5,6 +5,7 @@ use Viber\Bot;
 use Viber\Api\Sender;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use app\botseller\services\Storage;
 
 $dotenv = Dotenv\Dotenv::create(__DIR__.'/../');
 $dotenv->load();
