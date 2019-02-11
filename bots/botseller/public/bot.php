@@ -20,6 +20,8 @@ $botSender = new Sender([
 $log = new Logger('bot');
 $log->pushHandler(new StreamHandler('/tmp/bot.log'));
 
+$storage = new Storage($pdo, $dbusername, $dbpassword);
+
 try {
     // create bot instance
     $bot = new Bot(['token' => $apiKey]);
@@ -40,7 +42,7 @@ try {
                     ->setText('Thanks for subscription!')
             );
         })
-        ->onText('|начать|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|начать|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('onStart' . $event->getMessage()->getText());
             $str = require_once(__DIR__.'/../messages/greeting.php');
             $bot->getClient()->sendMessage(
@@ -51,7 +53,7 @@ try {
                     ->setText($str)
             );
         })
-        ->onText('|menu|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|menu|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $log->info('menu method:');
             $str = require_once(__DIR__.'/../messages/greeting.php');
@@ -63,7 +65,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|usecases|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|usecases|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('usecases method:');
             $kbrd = require_once(__DIR__.'/../keyboards/uscases.php');
             $log->info('usecases method:');
@@ -76,7 +78,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|benefits|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|benefits|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('benefits method:');
             $kbrd = require_once(__DIR__.'/../keyboards/benifits.php');
             $log->info('usecases method:');
@@ -89,7 +91,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|connectors|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|connectors|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('connectors method:');
             $kbrd = require_once(__DIR__.'/../keyboards/connectors.php');
             $log->info('usecases method:');
@@ -102,7 +104,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|effectually|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|effectually|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('effectually method:');
             $kbrd = require_once(__DIR__.'/../keyboards/effectually.php');
             $log->info('usecases method:');
@@ -115,7 +117,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|prices|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|prices|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('prices method:');
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $log->info('usecases method:');
@@ -128,7 +130,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|callback|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|callback|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('prices method:');
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $log->info('usecases method:');
@@ -141,7 +143,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|clear|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|clear|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('onClear' . $event->getMessage()->getText());
             $str = $event->getMessage()->getTrackingData();
             $log->info('Tracking data:'.$str);
@@ -155,13 +157,29 @@ try {
                     ->setText('Yes, MyCap')
             );
         })
-        ->onText('|.*|s', function ($event) use ($bot, $botSender, $log) {
+        ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
+            $storage->logMessageToDb(
+                "botseller",
+                $event->getMessage()->getText(),
+                $event->getSender()->getId(),
+                "botseller",
+                $event->getMessage()->getTrackingData()
+            );
+
             $joke = require_once(__DIR__.'/../skills/humor/gethummor.php');
             $log->info('onText ' . $joke);
             $str = "К сожалению я вас не понимаю. Давайте я вам анекдот расскажу: \n";
             $str = $str.$joke;
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
-            // .* - match any symbols
+
+            $storage->logMessageToDb(
+                "botseller",
+                $str,
+                "botseller",
+                $event->getSender()->getId(),
+                $event->getMessage()->getTrackingData()
+            );
+
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setTrackingData($str)

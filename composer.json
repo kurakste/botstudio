@@ -8,6 +8,9 @@
             "email": "kurakste@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {"app\\":"bots/"}
+    },
     "require": {
         "bogdaan/viber-bot-php": "^0.0.12",
         "vlucas/phpdotenv": "^3.3",
