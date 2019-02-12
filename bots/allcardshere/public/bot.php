@@ -135,11 +135,23 @@ try {
                     ->setSender($botSender)
                     ->setReceiver($event->getSender()->getId())
                     ->setText('Дайте отсканировать эту карту кассиру')
-                    ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/carusel.jpeg')
+                    ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/karusel.jpeg')
                     ->setKeyboard($kbrd)
             );
         })
 
+        ->onText("/kib|киб|красное и белое/ius", function ($event) use ($bot, $botSender, $log, $storage) {
+            $log->info('onClear' . $event->getMessage()->getText());
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
+            $bot->getClient()->sendMessage(
+                (new \Viber\Api\Message\Picture())
+                    ->setSender($botSender)
+                    ->setReceiver($event->getSender()->getId())
+                    ->setText('Дайте отсканировать эту карту кассиру')
+                    ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/kib.jpeg')
+                    ->setKeyboard($kbrd)
+            );
+        })
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $storage->logMessageToDb(
                 "allcardshere",
