@@ -72,6 +72,7 @@ try {
                     ->setReceiver($event->getSender()->getId())
                     ->setText('Дайте отсканировать эту карту кассиру')
                     ->setMedia($_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/metro.jpeg')
+                    ->setThumbnail($_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/metro.jpeg')
                     ->setKeyboard($kbrd)
             );
         })
