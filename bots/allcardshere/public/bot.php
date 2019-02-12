@@ -67,22 +67,22 @@ try {
             $log->info('onClear' . $event->getMessage()->getText());
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $bot->getClient()->sendMessage(
-                (new \Viber\Api\Message\Picture())
+                (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
                     ->setReceiver($event->getSender()->getId())
                     ->setText('Дайте отсканировать эту карту кассиру')
-                    ->setMedia($_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/metro.jpeg')
-                    ->setThumbnail($_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/metro.jpeg')
+                    // ->setMedia($_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/metro.jpeg')
+                    // ->setThumbnail($_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/metro.jpeg')
                     ->setKeyboard($kbrd)
             );
         })
 
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $storage->logMessageToDb(
-                "botseller",
+                "allcardshere",
                 $event->getMessage()->getText(),
                 $event->getSender()->getId(),
-                "botseller",
+                "allcardshere",
                 $event->getMessage()->getTrackingData()
             );
 
