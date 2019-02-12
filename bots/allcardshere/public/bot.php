@@ -98,7 +98,7 @@ try {
                     ->setText('Дайте отсканировать эту карту кассиру')
                     ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/perek.jpeg')
                     ->setKeyboard($kbrd)
-            );
+            )
 
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $storage->logMessageToDb(
