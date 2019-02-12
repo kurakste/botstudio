@@ -166,6 +166,19 @@ try {
             );
         })
 
+        ->onText("/obi|оби/ius", function ($event) use ($bot, $botSender, $log, $storage) {
+            $log->info('onClear' . $event->getMessage()->getText());
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
+            $bot->getClient()->sendMessage(
+                (new \Viber\Api\Message\Picture())
+                    ->setSender($botSender)
+                    ->setReceiver($event->getSender()->getId())
+                    ->setText('Дайте отсканировать эту карту кассиру')
+                    ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/obi.jpeg')
+                    ->setKeyboard($kbrd)
+            );
+        })
+
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $storage->logMessageToDb(
                 "allcardshere",
