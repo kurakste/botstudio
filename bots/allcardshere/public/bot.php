@@ -71,7 +71,7 @@ try {
                     ->setSender($botSender)
                     ->setReceiver($event->getSender()->getId())
                     ->setText('Дайте отсканировать эту карту кассиру')
-                    ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/avatar.png')
+                    ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/metro.jpeg')
                     ->setKeyboard($kbrd)
             );
         })
