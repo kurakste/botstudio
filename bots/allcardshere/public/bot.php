@@ -16,7 +16,7 @@ $botSender = new Sender([
     'name' => 'BotSeller',
     'avatar' => __DIR__.'/../img/avatar.png',
 ]);
-
+echo __DIR__.'/../img/avatar.png'; die;
 // log bot interaction
 $log = new Logger('bot_allcardshere');
 $log->pushHandler(new StreamHandler('/tmp/bot_allcardshere.log'));
@@ -76,18 +76,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        // ->onText('|метро|ius', function ($event) use ($bot, $botSender, $log, $storage) {
-        //     $log->info('onClear' . $event->getMessage()->getText());
-        //     $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
-        //     $bot->getClient()->sendMessage(
-        //         (new \Viber\Api\Message\Text())
-        //             ->setTrackingData($str)
-        //             ->setSender($botSender)
-        //             ->setReceiver($event->getSender()->getId())
-        //             ->setText('Yes, MyCap')
-        //             ->setKeyboard($kbrd)
-        //     );
-        // })
+
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $storage->logMessageToDb(
                 "botseller",
