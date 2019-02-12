@@ -127,7 +127,7 @@ try {
             );
         })
         
-        ->onText("/karusel|карусель/ius", function ($event) use ($bot, $botSender, $log, $storage) {
+        ->onText("/karusel|карусель|карусел/ius", function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('onClear' . $event->getMessage()->getText());
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $bot->getClient()->sendMessage(
@@ -152,6 +152,20 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
+
+        ->onText("/miratorg|мираторг/ius", function ($event) use ($bot, $botSender, $log, $storage) {
+            $log->info('onClear' . $event->getMessage()->getText());
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
+            $bot->getClient()->sendMessage(
+                (new \Viber\Api\Message\Picture())
+                    ->setSender($botSender)
+                    ->setReceiver($event->getSender()->getId())
+                    ->setText('Дайте отсканировать эту карту кассиру')
+                    ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/miratorg.jpeg')
+                    ->setKeyboard($kbrd)
+            );
+        })
+
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $storage->logMessageToDb(
                 "allcardshere",
