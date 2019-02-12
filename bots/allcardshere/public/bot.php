@@ -76,7 +76,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|метро|is', function ($event) use ($bot, $botSender, $log, $storage) {
+        ->onText('|метро|ius', function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('onClear' . $event->getMessage()->getText());
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $bot->getClient()->sendMessage(
