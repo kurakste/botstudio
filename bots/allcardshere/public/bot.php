@@ -14,7 +14,7 @@ $apiKey = $_ENV['apikey'];
 
 $botSender = new Sender([
     'name' => 'BotSeller',
-    'avatar' => __DIR__.'/../img/avatar.png',
+    'avatar' => $_SERVER['SERVER_NAME'].'/bots/allcardshere/img/avatar.png',
 ]);
 echo __DIR__.'/../img/avatar.png'; die;
 // log bot interaction
