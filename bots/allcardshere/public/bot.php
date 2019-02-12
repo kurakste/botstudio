@@ -190,6 +190,7 @@ try {
                     ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/okey.jpeg')
                     ->setKeyboard($kbrd)
             );
+        })
 
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $storage->logMessageToDb(
