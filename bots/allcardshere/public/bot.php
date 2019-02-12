@@ -67,11 +67,11 @@ try {
             $log->info('onClear' . $event->getMessage()->getText());
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $bot->getClient()->sendMessage(
-                (new \Viber\Api\Message\Text())
-                    ->setTrackingData($str)
+                (new \Viber\Api\Message\Picture())
                     ->setSender($botSender)
                     ->setReceiver($event->getSender()->getId())
-                    ->setText('Yes, MyCap')
+                    ->setText('Дайте отсканировать эту карту кассиру')
+                    ->setMedia($_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/metro.jpeg')
                     ->setKeyboard($kbrd)
             );
         })
@@ -92,9 +92,9 @@ try {
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
 
             $storage->logMessageToDb(
-                "botseller",
+                "allcardshere",
                 $str,
-                "botseller",
+                "allcardshere",
                 $event->getSender()->getId(),
                 $event->getMessage()->getTrackingData()
             );
