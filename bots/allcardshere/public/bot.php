@@ -16,7 +16,6 @@ $botSender = new Sender([
     'name' => 'BotSeller',
     'avatar' => $_SERVER['SERVER_NAME'].'/bots/allcardshere/img/avatar.png',
 ]);
-echo __DIR__.'/../img/avatar.png'; die;
 // log bot interaction
 $log = new Logger('bot_allcardshere');
 $log->pushHandler(new StreamHandler('/tmp/bot_allcardshere.log'));
