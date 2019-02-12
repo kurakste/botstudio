@@ -67,7 +67,7 @@ try {
             $log->info('onClear' . $event->getMessage()->getText());
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $bot->getClient()->sendMessage(
-                (new \Viber\Api\Message\Text())
+                (new \Viber\Api\Message\Picture())
                     ->setSender($botSender)
                     ->setReceiver($event->getSender()->getId())
                     ->setText('Дайте отсканировать эту карту кассиру')
