@@ -64,7 +64,7 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|metro|is', function ($event) use ($bot, $botSender, $log, $storage) {
+        ->onText("/metro|метро/ius", function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('onClear' . $event->getMessage()->getText());
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $bot->getClient()->sendMessage(
@@ -76,18 +76,18 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|метро|ius', function ($event) use ($bot, $botSender, $log, $storage) {
-            $log->info('onClear' . $event->getMessage()->getText());
-            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
-            $bot->getClient()->sendMessage(
-                (new \Viber\Api\Message\Text())
-                    ->setTrackingData($str)
-                    ->setSender($botSender)
-                    ->setReceiver($event->getSender()->getId())
-                    ->setText('Yes, MyCap')
-                    ->setKeyboard($kbrd)
-            );
-        })
+        // ->onText('|метро|ius', function ($event) use ($bot, $botSender, $log, $storage) {
+        //     $log->info('onClear' . $event->getMessage()->getText());
+        //     $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
+        //     $bot->getClient()->sendMessage(
+        //         (new \Viber\Api\Message\Text())
+        //             ->setTrackingData($str)
+        //             ->setSender($botSender)
+        //             ->setReceiver($event->getSender()->getId())
+        //             ->setText('Yes, MyCap')
+        //             ->setKeyboard($kbrd)
+        //     );
+        // })
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $storage->logMessageToDb(
                 "botseller",
