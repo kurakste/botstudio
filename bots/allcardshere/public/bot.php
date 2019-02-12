@@ -213,7 +213,7 @@ try {
                     ->setSender($botSender)
                     ->setReceiver($event->getSender()->getId())
                     ->setText('Дайте отсканировать эту карту кассиру')
-                    ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/polushka.jpeg')
+                    ->setMedia('https://'.$_SERVER['SERVER_NAME'].'/bots/allcardshere/img/cards/spar.jpeg')
                     ->setKeyboard($kbrd)
             );
         })
@@ -229,7 +229,7 @@ try {
 
             $joke = require_once(__DIR__.'/../skills/humor/gethummor.php');
             $log->info('onText ' . $joke);
-            $str = "К сожалению я вас не понимаю. Давайте я вам анекдот расскажу: \n";
+            $str = "Похоже такой карты нет. Записали, постараемся добавить. \n Не смогла помочь - давайте я вам анекдот расскажу: \n";
             $str = $str.$joke;
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
 

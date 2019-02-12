@@ -8,5 +8,5 @@ return
                 ->setTextHAlign('center')
                 ->setActionType('reply')
                 ->setActionBody('menu')
-                ->setText('Где я?'),
+                ->setText('СПРАВКА'),
         ]);
