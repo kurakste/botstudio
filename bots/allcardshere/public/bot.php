@@ -63,7 +63,19 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText("/metro|метро/ius", function ($event) use ($bot, $botSender, $log, $storage) {
+
+        ->onText("/agat|агат/ius", function ($event) use ($bot, $botSender, $log, $storage) {
+            $log->info('agat:' . $event->getMessage()->getText());
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
+            $bot->getClient()->sendMessage(
+                (new \Viber\Api\Message\Text())
+                    ->setSender($botSender)
+                    ->setReceiver($event->getSender()->getId())
+                    ->setText('Эта сеть использует карты с магнитной лентой :-(')
+                    ->setKeyboard($kbrd)
+            );
+        })
+            ->onText("/metro|метро/ius", function ($event) use ($bot, $botSender, $log, $storage) {
             $log->info('onClear' . $event->getMessage()->getText());
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $bot->getClient()->sendMessage(
