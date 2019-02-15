@@ -1,6 +1,6 @@
 <?php
 
-namespace app\botseller\services;
+namespace app\allcardshere\services;
 
 /**
  * This class will storge messages in database.
