@@ -64,6 +64,19 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
+        ->onText('|cardlist|s', function ($event) use ($bot, $botSender, $log, $storage) {
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
+            $log->info('cardlist method:');
+            $parser = new Parser;
+            $str = "У нас есть следующие каты: ".$parser->getAllCardsNameAsString().".";
+            $bot->getClient()->sendMessage(
+                (new \Viber\Api\Message\Text())
+                    ->setSender($botSender)
+                    ->setReceiver($event->getSender()->getId())
+                    ->setText($str)
+                    ->setKeyboard($kbrd)
+            );
+        })
 
         ->onText('|.*|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $parser = new Parser;
