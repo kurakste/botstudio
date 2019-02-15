@@ -71,6 +71,7 @@ try {
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
 
             if ($card) {
+            // If we parse frase & get triger we are here
                 if ($card['cardavailable']) {
                     $image = 'https://'.$_SERVER['SERVER_NAME']
                         .'/bots/allcardshere/img/cards/'
@@ -83,7 +84,6 @@ try {
                             ->setMedia($image)
                             ->setKeyboard($kbrd)
                     );
-
                 } else {
                     $bot->getClient()->sendMessage(
                         (new \Viber\Api\Message\Text())
@@ -94,6 +94,7 @@ try {
                     );
                 }
             } else {
+                // We parse frase but there are no triggers.
                 $storage->logMessageToDb(
                     "allcardshere",
                     $event->getMessage()->getText(),
