@@ -52,10 +52,11 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|menu|s', function ($event) use ($bot, $botSender, $log, $storage) {
+        ->onText('|cardlist|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
-            $log->info('menu method:');
-            $str = require_once(__DIR__.'/../messages/greeting.php');
+            $log->info('cardlist method:');
+            $parser = new Parser;
+            $str = "У нас есть следующие каты: ".$parser->getAllCardsNameAsString().".";
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
@@ -64,11 +65,11 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
-        ->onText('|cardlist|s', function ($event) use ($bot, $botSender, $log, $storage) {
+        ->onText('|donate|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
-            $log->info('cardlist method:');
+            $log->info('donate method:');
             $parser = new Parser;
-            $str = "У нас есть следующие каты: ".$parser->getAllCardsNameAsString().".";
+            $str = "Пункт находится в разработке.";
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
