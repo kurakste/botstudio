@@ -79,7 +79,7 @@ try {
                         (new \Viber\Api\Message\Picture())
                             ->setSender($botSender)
                             ->setReceiver($event->getSender()->getId())
-                            ->setText($card->message)
+                            ->setText($card['message'])
                             ->setMedia($image)
                             ->setKeyboard($kbrd)
                     );
@@ -89,7 +89,7 @@ try {
                         (new \Viber\Api\Message\Text())
                             ->setSender($botSender)
                             ->setReceiver($event->getSender()->getId())
-                            ->setText($card->message)
+                            ->setText($card['message'])
                             ->setKeyboard($kbrd)
                     );
                 }
