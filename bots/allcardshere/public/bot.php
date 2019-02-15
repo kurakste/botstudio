@@ -71,10 +71,10 @@ try {
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
 
             if ($card) {
-                if ($card->cardavailable) {
+                if ($card['cardavailable']) {
                     $image = 'https://'.$_SERVER['SERVER_NAME']
                         .'/bots/allcardshere/img/cards/'
-                        .$card->card;
+                        .$card['card'];
                     $bot->getClient()->sendMessage(
                         (new \Viber\Api\Message\Picture())
                             ->setSender($botSender)
