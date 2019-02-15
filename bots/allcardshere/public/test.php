@@ -1,16 +1,13 @@
 <?php
-
 require_once("../../../vendor/autoload.php");
 
-$dotenv = Dotenv\Dotenv::create(__DIR__.'/../');
-$dotenv->load();
+use app\allcardshere\services\Parser;
 
-use app\botseller\services\Storage;
-$pdo = $_ENV['pdo'];
-$dbusername = $_ENV['dbusername'];
-$dbpassword = $_ENV['dbpassword'];
 
-$storage = new Storage($pdo, $dbusername, $dbpassword);
-$storage->logMessageToDb("xxx0077", "this is message!", "yyy0088", "zzz0099", "fucking context !!!");
+$frase = "дЕкатлон fuckin Marry Poppins";
 
-Storage::getMessage();
+$parser = new Parser;
+$res = $parser->parse($frase);
+$res = $parser->getAllCardsNameAsString();
+
+var_dump($res);
