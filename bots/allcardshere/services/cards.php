@@ -8,7 +8,7 @@ return [
         'message' => 'Дайте отсканировать эту карту кассиру'
     ],
     'Эссен' => [
-        'alias' => ['агат', 'agat'], 
+        'alias' => ['эссен','эсен', 'esen', 'essen'], 
         'cardavailable' => true,
         'card' => 'essen.jpeg', 
         'message' => 'Дайте отсканировать эту карту кассиру'
