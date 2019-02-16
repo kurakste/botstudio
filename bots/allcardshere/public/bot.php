@@ -56,7 +56,7 @@ try {
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $log->info('cardlist method:');
             $parser = new Parser;
-            $str = "У нас есть следующие каты: ".$parser->getAllCardsNameAsString().".";
+            $str = "У нас есть следующие карты: ".$parser->getAllCardsNameAsString().".";
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
