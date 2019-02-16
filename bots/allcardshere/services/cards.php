@@ -3,8 +3,8 @@
 return [
     'Агат' => [
         'alias' => ['агат', 'agat'], 
-        'cardavailable' => false,
-        'card' => '', 
+        'cardavailable' => true,
+        'card' => 'agat.jpeg', 
         'message' => 'К сожалению сеть использует магнитные карты. Наш сервис здесь не поможет :-('
     ],
     'Метро' => [
