@@ -65,6 +65,18 @@ try {
                     ->setKeyboard($kbrd)
             );
         })
+        ->onText('|help|s', function ($event) use ($bot, $botSender, $log, $storage) {
+            $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
+            $log->info('menu method:');
+            $str = require_once(__DIR__.'/../messages/menu.php');;
+            $bot->getClient()->sendMessage(
+                (new \Viber\Api\Message\Text())
+                    ->setSender($botSender)
+                    ->setReceiver($event->getSender()->getId())
+                    ->setText($str)
+                    ->setKeyboard($kbrd)
+            );
+        })
         ->onText('|donate|s', function ($event) use ($bot, $botSender, $log, $storage) {
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $log->info('donate method:');

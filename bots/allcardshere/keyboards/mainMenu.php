@@ -9,7 +9,7 @@ return
                 ->setTextHAlign('center')
                 ->setActionType('reply')
                 ->setActionBody('cardlist')
-                ->setText('Список карт.'),
+                ->setText('СПИСОК КАРТ'),
             (new \Viber\Api\Keyboard\Button())
                 ->setBgColor('#8074d6')
                 ->setColumns(3)
@@ -17,12 +17,12 @@ return
                 ->setTextHAlign('center')
                 ->setActionType('reply')
                 ->setActionBody('donate')
-                ->setText('Сказать спасибо'),
+                ->setText('СКАЗАТЬ СПАСИБО'),
             (new \Viber\Api\Keyboard\Button())
                 ->setBgColor('#2fa4e7')
                 ->setTextSize('large')
                 ->setTextHAlign('center')
                 ->setActionType('reply')
-                ->setActionBody('menu')
+                ->setActionBody('help')
                 ->setText('СПРАВКА'),
         ]);
