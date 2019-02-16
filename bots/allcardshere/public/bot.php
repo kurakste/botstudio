@@ -81,7 +81,7 @@ try {
             $kbrd = require_once(__DIR__.'/../keyboards/mainMenu.php');
             $log->info('donate method:');
             $parser = new Parser;
-            $str = "Пункт находится в разработке.";
+            $str = require_once(__DIR__.'/../messages/donate.php');;
             $bot->getClient()->sendMessage(
                 (new \Viber\Api\Message\Text())
                     ->setSender($botSender)
