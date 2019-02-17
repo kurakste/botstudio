@@ -9,11 +9,18 @@
         }
     ],
     "autoload": {
-        "psr-4": {"app\\":"bots/"}
+        "psr-4": {
+                "app\\" : "bots/",
+                "skills\\" : "skills"
+            }
+
     },
     "require": {
         "bogdaan/viber-bot-php": "^0.0.12",
         "vlucas/phpdotenv": "^3.3",
         "monolog/monolog": "^1.24"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.2"
     }
 }

@@ -7,6 +7,7 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use app\allcardshere\services\Storage;
 use app\allcardshere\services\Parser;
+use skills\humor\Anekdot;
 
 $dotenv = Dotenv\Dotenv::create(__DIR__.'/../');
 $dotenv->load();
@@ -129,10 +130,10 @@ try {
                     $event->getMessage()->getTrackingData()
                 );
 
-                $joke = require_once(__DIR__.'/../skills/humor/gethummor.php');
-                $log->info('onText ' . $joke);
+                $joke = Anekdot::getRandomAnekdot();
                 $str = "Похоже такой карты нет. Записали, постараемся добавить. \n Не смогла помочь - давайте я вам анекдот расскажу: \n";
                 $str = $str.$joke;
+                $log->info('onText ' . $event->getMessage()->getText());
 
                 $storage->logMessageToDb(
                     "allcardshere",
