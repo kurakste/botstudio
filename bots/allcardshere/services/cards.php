@@ -38,7 +38,7 @@ return [
         'message' => 'Дайте отсканировать эту карту кассиру', 
     ],
     'Fixprice' => [
-        'alias' => ['fixprice', 'fix price', 'фикс прайс', 'фикспрайс'], 
+        'alias' => ['fixprice', 'fix price', 'фикс прайс', 'фикспрайс', 'фикс'], 
         'cardavailable' => true,
         'card' => 'fixprice.jpeg',
         'message' => 'Дайте отсканировать эту карту кассиру', 
@@ -50,7 +50,7 @@ return [
         'message' => 'Дайте отсканировать эту карту кассиру', 
     ],
     
-    'Красное и Белое' => [
+    'Красное и Белое(киб)' => [
         'alias' => ['kib', 'kib', 'красное и белое', 'киб', 'красное','красное и'], 
         'cardavailable' => true,
         'card' => 'kib.jpeg',
@@ -68,7 +68,7 @@ return [
         'card' => 'okey.jpeg',
         'message' => 'Дайте отсканировать эту карту кассиру', 
     ],
-    'Polushka' => [
+    'Полушка' => [
         'alias' => ['polushka', 'полушка'], 
         'cardavailable' => true,
         'card' => 'polushka.jpeg',
